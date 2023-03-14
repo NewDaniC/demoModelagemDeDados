@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,6 +25,7 @@ public class Produto  implements Serializable {
 	private Double preco;
 
 	/* Tabela adicional por ser muitos para muitos */
+	@JsonBackReference /* No outro lado da associacao ja foram buscados os obj eu nao vou buscar mais */
 	@ManyToMany
 	@JoinTable(name = "tb_prod_categ",
 		joinColumns = @JoinColumn(name = "produto_id"),
