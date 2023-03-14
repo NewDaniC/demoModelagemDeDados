@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
@@ -31,7 +30,7 @@ public class Produto  implements Serializable {
 	private Double preco;
 
 	/* Tabela adicional por ser muitos para muitos */
-	@JsonBackReference /* No outro lado da associacao ja foram buscados os obj eu nao vou buscar mais */
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "tb_prod_categ",
 		joinColumns = @JoinColumn(name = "produto_id"),
